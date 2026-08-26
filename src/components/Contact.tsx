@@ -29,41 +29,31 @@ export default function Contact() {
     setErrorMessage("");
 
     try {
-      // Access key for Web3Forms (or environment variable if set)
-      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "YOUR_ACCESS_KEY";
-
       const payload = {
-        access_key: accessKey,
         name: formData.name,
         email: formData.email,
         budget: selectedBudget,
         message: formData.message,
-        subject: `New Portfolio Inquiry from ${formData.name}`,
-        from_name: "Raj Puthawala Portfolio",
-        to_email: personalDetails.email,
       };
 
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
         },
         body: JSON.stringify(payload),
       });
 
       const data = await response.json();
 
-      if (data.success) {
+      if (response.ok && data.success) {
         setSubmitted(true);
       } else {
-        // Fallback: If no access key is configured yet, still show confirmation + direct mailto link
-        setSubmitted(true);
+        setErrorMessage(data.error || "Failed to send message. Please try again.");
       }
     } catch (error) {
       console.error("Form submission error:", error);
-      // Fallback grace
-      setSubmitted(true);
+      setErrorMessage("Network error. Please check your connection and try again.");
     } finally {
       setLoading(false);
     }
