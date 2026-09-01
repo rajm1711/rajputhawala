@@ -174,4 +174,44 @@ body {
   scrollbar-width: none;
 }
 
+/* Cinematic Laser Beam Section Divider */
+.cinematic-divider {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(6, 182, 212, 0.6) 30%, rgba(168, 85, 247, 0.8) 50%, rgba(236, 72, 153, 0.6) 70%, transparent 100%);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.5), 0 0 30px rgba(168, 85, 247, 0.3);
+}
+
+.cinematic-divider::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 5px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(6, 182, 212, 0.6) 40%, transparent 80%);
+  filter: blur(1px);
+}
+
+/* Cinematic Text Light Beam Sweep */
+@keyframes textSweep {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.cinematic-glow-text {
+  background: linear-gradient(90deg, #06b6d4 0%, #ffffff 25%, #a855f7 50%, #ffffff 75%, #ec4899 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textSweep 6s linear infinite;
+}
+
+
 

@@ -60,30 +60,30 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden bg-grid-pattern transition-colors duration-300">
+    <section id="contact" className="py-24 relative overflow-hidden bg-grid-pattern transition-colors duration-300">
       <div className="ambient-glow-1" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Editorial Big Contact Callout Banner */}
-        <div className="mb-14 text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30 text-[11px] font-mono mb-4 shadow-sm font-medium">
+        <div className="mb-16 text-center max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30 text-[11px] font-mono mb-4 shadow-sm font-medium">
             <Mail size={13} />
             <span>START A CONVERSATION</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-semibold font-heading text-foreground tracking-tight leading-[1.08]">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold font-heading text-foreground tracking-tight leading-[1.08]">
             Great Systems <br />
             <span className="gradient-text">Start With Great Architecture</span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mt-3 font-normal max-w-xl mx-auto">
-            Available for full stack engineering, Next.js architecture consulting, real-time WebSockets integration, and enterprise contracts.
+          <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mt-3 font-normal max-w-xl mx-auto leading-relaxed">
+            Available for full stack engineering contracts, Next.js architecture consulting, real-time WebSockets integration, and enterprise projects.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start max-w-5xl mx-auto">
           
-          {/* Left Info Column */}
+          {/* Direct Info Column */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -91,25 +91,25 @@ export default function Contact() {
             transition={{ duration: 0.4 }}
             className="lg:col-span-5 space-y-5"
           >
-            <div className="glass-panel p-5 sm:p-7 rounded-2xl border border-border space-y-4 shadow-lg gradient-border">
-              <div className="flex items-center justify-between pb-3 border-b border-border">
-                <h3 className="text-base font-semibold font-heading text-foreground">
+            <div className="glass-panel p-6 sm:p-7 rounded-3xl border border-border space-y-4 shadow-xl gradient-border">
+              <div className="flex items-center justify-between pb-3.5 border-b border-border">
+                <h3 className="text-lg font-bold font-heading text-foreground">
                   Direct Contact Details
                 </h3>
-                <span className="text-[10px] font-mono text-cyan-500">SURAT, IN</span>
+                <span className="text-[10px] font-mono text-cyan-400 font-semibold">SURAT, IN (IST)</span>
               </div>
 
               {/* Email Link */}
               <a
                 href={`mailto:${personalDetails.email}`}
-                className="flex items-center gap-3.5 p-3 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-border hover:border-cyan-500/30 transition-all duration-200 group"
+                className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-border hover:border-cyan-500/40 transition-all duration-200 group"
               >
-                <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 group-hover:scale-105 transition-transform">
-                  <Mail size={15} />
+                <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 group-hover:scale-110 transition-transform">
+                  <Mail size={16} />
                 </div>
                 <div>
                   <p className="text-[9px] font-mono text-gray-500 dark:text-gray-400 font-normal">Email Address</p>
-                  <p className="text-xs font-semibold text-foreground group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                  <p className="text-xs sm:text-sm font-semibold text-foreground group-hover:text-cyan-400 transition-colors">
                     {personalDetails.email}
                   </p>
                 </div>
@@ -118,27 +118,27 @@ export default function Contact() {
               {/* Phone Link */}
               <a
                 href={`tel:${personalDetails.phone.replace(/\s+/g, "")}`}
-                className="flex items-center gap-3.5 p-3 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-border hover:border-emerald-500/30 transition-all duration-200 group"
+                className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-border hover:border-emerald-500/40 transition-all duration-200 group"
               >
-                <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 group-hover:scale-105 transition-transform">
-                  <Phone size={15} />
+                <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 group-hover:scale-110 transition-transform">
+                  <Phone size={16} />
                 </div>
                 <div>
-                  <p className="text-[9px] font-mono text-gray-500 dark:text-gray-400 font-normal">Phone Number</p>
-                  <p className="text-xs font-semibold text-foreground group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                  <p className="text-[9px] font-mono text-gray-500 dark:text-gray-400 font-normal">Phone / WhatsApp</p>
+                  <p className="text-xs sm:text-sm font-semibold text-foreground group-hover:text-emerald-400 transition-colors">
                     {personalDetails.phone}
                   </p>
                 </div>
               </a>
 
               {/* Location Card */}
-              <div className="flex items-center gap-3.5 p-3 rounded-xl bg-black/5 dark:bg-white/5 border border-border">
-                <div className="p-2 rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400">
-                  <MapPin size={15} />
+              <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-black/5 dark:bg-white/5 border border-border">
+                <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400">
+                  <MapPin size={16} />
                 </div>
                 <div>
                   <p className="text-[9px] font-mono text-gray-500 dark:text-gray-400 font-normal">Location & Timezone</p>
-                  <p className="text-xs font-semibold text-foreground">
+                  <p className="text-xs sm:text-sm font-semibold text-foreground">
                     {personalDetails.location} • IST
                   </p>
                 </div>
@@ -149,20 +149,20 @@ export default function Contact() {
                 href={personalDetails.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-3 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-border hover:border-cyan-500/30 transition-all duration-200 group"
+                className="flex items-center justify-between p-3.5 rounded-2xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-border hover:border-cyan-500/40 transition-all duration-200 group"
               >
                 <div className="flex items-center gap-2.5">
-                  <Github size={15} className="text-gray-700 dark:text-gray-300" />
-                  <span className="text-xs font-semibold text-foreground">
+                  <Github size={16} className="text-gray-700 dark:text-gray-300" />
+                  <span className="text-xs sm:text-sm font-semibold text-foreground">
                     GitHub Profile
                   </span>
                 </div>
-                <ArrowUpRight size={13} className="text-gray-400 group-hover:text-foreground group-hover:rotate-45 transition-transform" />
+                <ArrowUpRight size={14} className="text-gray-400 group-hover:text-foreground group-hover:rotate-45 transition-transform" />
               </a>
             </div>
           </motion.div>
 
-          {/* Right Contact Form */}
+          {/* Right Estimator & Contact Form */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -170,27 +170,27 @@ export default function Contact() {
             transition={{ duration: 0.4, delay: 0.1 }}
             className="lg:col-span-7"
           >
-            <div className="glass-panel p-5 sm:p-7 rounded-2xl border border-border relative shadow-lg gradient-border">
+            <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-border relative shadow-2xl gradient-border">
               {submitted ? (
-                <div className="py-10 text-center flex flex-col items-center justify-center space-y-3">
-                  <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center">
-                    <CheckCircle2 size={26} />
+                <div className="py-10 text-center flex flex-col items-center justify-center space-y-4">
+                  <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                    <CheckCircle2 size={30} />
                   </div>
 
-                  <h3 className="text-xl font-semibold font-heading text-foreground">
+                  <h3 className="text-2xl font-bold font-heading text-foreground">
                     Message Sent Successfully!
                   </h3>
 
-                  <p className="text-xs text-gray-600 dark:text-gray-300 max-w-sm font-normal leading-relaxed">
-                    Thank you <span className="font-semibold text-foreground">{formData.name || "there"}</span>. Your message and estimated budget ({selectedBudget}) have been dispatched directly to <span className="text-cyan-500 font-mono font-medium">{personalDetails.email}</span>.
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 max-w-sm font-normal leading-relaxed">
+                    Thank you <span className="font-semibold text-foreground">{formData.name || "there"}</span>. Your inquiry (budget {selectedBudget}) has been dispatched directly to <span className="text-cyan-400 font-mono font-medium">{personalDetails.email}</span>.
                   </p>
 
-                  <div className="pt-3 flex flex-wrap items-center justify-center gap-2.5">
+                  <div className="pt-3 flex flex-wrap items-center justify-center gap-3">
                     <a
                       href={`mailto:${personalDetails.email}?subject=Inquiry from ${encodeURIComponent(formData.name)}&body=Name: ${encodeURIComponent(formData.name)}%0D%0AEmail: ${encodeURIComponent(formData.email)}%0D%0ABudget: ${encodeURIComponent(selectedBudget)}%0D%0AMessage: ${encodeURIComponent(formData.message)}`}
-                      className="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-xs font-medium shadow-md flex items-center gap-1.5"
+                      className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-xs font-medium shadow-md flex items-center gap-2"
                     >
-                      <Mail size={13} />
+                      <Mail size={14} />
                       Send Copy Via Email Client
                     </a>
 
@@ -199,25 +199,25 @@ export default function Contact() {
                         setSubmitted(false);
                         setFormData({ name: "", email: "", message: "" });
                       }}
-                      className="px-4 py-2 rounded-xl glass-panel text-foreground text-xs font-mono border border-border font-medium"
+                      className="px-5 py-2.5 rounded-xl glass-panel text-foreground text-xs font-mono border border-border font-medium"
                     >
                       Send another message
                     </button>
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="flex items-center justify-between pb-3 border-b border-border">
-                    <h3 className="text-base font-semibold font-heading text-foreground">
-                      Send a Direct Message
+                <form onSubmit={handleSubmit} className="space-y-4.5">
+                  <div className="flex items-center justify-between pb-3.5 border-b border-border">
+                    <h3 className="text-lg font-bold font-heading text-foreground">
+                      Direct Project Inquiry
                     </h3>
-                    <span className="text-[10px] font-mono text-emerald-500 font-medium flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-                      LIVE NOTIFICATIONS
+                    <span className="text-[10px] font-mono text-emerald-400 font-medium flex items-center gap-1.5 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/30">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                      LIVE SYNC
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-[11px] font-mono text-gray-500 dark:text-gray-400 mb-1 font-normal">
                         Your Name *
@@ -229,7 +229,7 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="John Doe"
-                        className="w-full px-3.5 py-2 rounded-xl glass-panel text-foreground placeholder-gray-400 text-xs focus:outline-none focus:border-cyan-500 transition-colors font-normal"
+                        className="w-full px-4 py-2.5 rounded-xl glass-panel text-foreground placeholder-gray-500 text-xs focus:outline-none focus:border-cyan-500 transition-colors font-normal"
                       />
                     </div>
 
@@ -244,7 +244,7 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="john@example.com"
-                        className="w-full px-3.5 py-2 rounded-xl glass-panel text-foreground placeholder-gray-400 text-xs focus:outline-none focus:border-cyan-500 transition-colors font-normal"
+                        className="w-full px-4 py-2.5 rounded-xl glass-panel text-foreground placeholder-gray-500 text-xs focus:outline-none focus:border-cyan-500 transition-colors font-normal"
                       />
                     </div>
                   </div>
@@ -252,7 +252,7 @@ export default function Contact() {
                   {/* Budget Selector Pills */}
                   <div>
                     <label className="block text-[11px] font-mono text-gray-500 dark:text-gray-400 mb-1.5 font-normal flex items-center gap-1">
-                      <DollarSign size={11} className="text-cyan-500" />
+                      <DollarSign size={11} className="text-cyan-400" />
                       Estimated Project Budget (USD)
                     </label>
                     <div className="grid grid-cols-4 gap-2">
@@ -261,9 +261,9 @@ export default function Contact() {
                           key={b}
                           type="button"
                           onClick={() => setSelectedBudget(b)}
-                          className={`py-1.5 px-2 rounded-lg text-[10px] font-mono transition-all border ${
+                          className={`py-2 px-2.5 rounded-xl text-[10px] font-mono transition-all border ${
                             selectedBudget === b
-                              ? "bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-medium border-cyan-400"
+                              ? "bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-medium border-cyan-400 shadow-md"
                               : "bg-black/5 dark:bg-white/5 border-border text-gray-600 dark:text-gray-400 hover:text-foreground"
                           }`}
                         >
@@ -275,22 +275,22 @@ export default function Contact() {
 
                   <div>
                     <label className="block text-[11px] font-mono text-gray-500 dark:text-gray-400 mb-1 font-normal">
-                      Message *
+                      Message / Project Details *
                     </label>
                     <textarea
                       name="message"
                       required
-                      rows={3.5}
+                      rows={4}
                       value={formData.message}
                       onChange={handleInputChange}
-                      placeholder="Tell me about your project, system scope, or collaboration..."
-                      className="w-full px-3.5 py-2 rounded-xl glass-panel text-foreground placeholder-gray-400 text-xs focus:outline-none focus:border-cyan-500 transition-colors resize-none font-normal"
+                      placeholder="Tell me about your project requirement or architecture inquiry..."
+                      className="w-full px-4 py-2.5 rounded-xl glass-panel text-foreground placeholder-gray-500 text-xs focus:outline-none focus:border-cyan-500 transition-colors resize-none font-normal"
                     />
                   </div>
 
                   {errorMessage && (
-                    <div className="p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-500 text-xs font-mono flex items-center gap-1.5">
-                      <AlertCircle size={14} />
+                    <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-500 text-xs font-mono flex items-center gap-2">
+                      <AlertCircle size={15} />
                       <span>{errorMessage}</span>
                     </div>
                   )}
@@ -298,14 +298,14 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 hover:opacity-95 text-white font-medium text-xs uppercase tracking-wider shadow-md shadow-purple-500/20 transition-all flex items-center justify-center gap-1.5 active:scale-98 disabled:opacity-50 group"
+                    className="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 hover:opacity-95 text-white font-medium text-xs uppercase tracking-wider shadow-lg shadow-purple-500/25 transition-all flex items-center justify-center gap-2 active:scale-98 disabled:opacity-50 group"
                   >
                     {loading ? (
-                      "Sending Email Notification..."
+                      "Sending Message..."
                     ) : (
                       <>
-                        <Send size={13} className="group-hover:translate-x-0.5 transition-transform" />
-                        Send Message to Raj Puthawala
+                        <Send size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                        Send Direct Inquiry to Raj Puthawala
                       </>
                     )}
                   </button>
@@ -320,8 +320,3 @@ export default function Contact() {
     </section>
   );
 }
-
-
-
-
-
