@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
+import Link from "next/link";
 import { projects, Project } from "@/data/resumeData";
 import ProjectModal from "./ProjectModal";
 import TiltCard from "./TiltCard";
@@ -19,6 +20,7 @@ import {
   Cpu,
   ArrowUpRight,
   Terminal,
+  FileText,
 } from "lucide-react";
 
 const containerVariants: Variants = {
@@ -26,21 +28,21 @@ const containerVariants: Variants = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12,
+      staggerChildren: 0.1,
       delayChildren: 0.05,
     },
   },
 };
 
 const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 45, scale: 0.93 },
+  hidden: { opacity: 0, y: 35, scale: 0.95 },
   show: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
       type: "spring",
-      stiffness: 260,
+      stiffness: 240,
       damping: 22,
     },
   },
@@ -51,7 +53,26 @@ export default function Projects() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  // Flagship Project
+  // Map project ID to Case Study route slug
+  const getCaseStudySlug = (id: string) => {
+    switch (id) {
+      case "edge-iq":
+        return "edge-iq";
+      case "swan-ecom":
+        return "swan-ecommerce";
+      case "assemble-teams":
+        return "assemble-teams";
+      case "inbuildify":
+        return "inbuildify";
+      case "ecombackend":
+        return "ecombackend";
+      case "rhodeskin-clone":
+        return "rhodeskin-clone";
+      default:
+        return null;
+    }
+  };
+
   const flagshipProject = projects.find((p) => p.id === "edge-iq");
 
   const categories = [
@@ -98,14 +119,14 @@ export default function Projects() {
         return (
           <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase bg-cyan-500/10 text-cyan-600 dark:text-cyan-300 border border-cyan-500/30 flex items-center gap-1 font-medium shadow-sm">
             <Building2 size={11} className="text-cyan-500" />
-            Office Work
+            Office Production
           </span>
         );
       case "personal":
         return (
           <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase bg-purple-500/10 text-purple-600 dark:text-purple-300 border border-purple-500/30 flex items-center gap-1 font-medium shadow-sm">
             <UserCheck size={11} className="text-purple-500" />
-            Personal AI
+            Personal Flagship
           </span>
         );
       case "vercel":
@@ -118,8 +139,8 @@ export default function Projects() {
       case "render":
         return (
           <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase bg-amber-500/10 text-amber-600 dark:text-amber-300 border border-amber-500/30 flex items-center gap-1 font-medium shadow-sm">
-            <Server size={11} className="text-amber-500 animate-pulse" />
-            Render Docker API
+            <Server size={11} className="text-amber-500" />
+            Docker REST API
           </span>
         );
     }
@@ -134,22 +155,22 @@ export default function Projects() {
 
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.5 }}
           className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
         >
           <div>
             <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30 text-[11px] font-mono mb-3 shadow-sm font-medium">
               <Code size={13} />
-              <span>DOCK & BENTO SHOWCASE ({projects.length})</span>
+              <span>PROJECTS & CASE STUDIES ({projects.length})</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-bold font-heading text-foreground tracking-tight">
-              Featured <span className="gradient-text">Systems & Applications</span>
+              Featured <span className="gradient-text">Systems & Projects</span>
             </h2>
             <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mt-2 max-w-xl font-normal leading-relaxed">
-              Explore production enterprise systems, real-time WebSockets engines, Vercel edge applications, and Docker microservices.
+              Explore technical case studies for production web apps, real-time WebSocket platforms, e-commerce storefronts, and Docker REST API services.
             </p>
           </div>
 
@@ -169,12 +190,12 @@ export default function Projects() {
           </div>
         </motion.div>
 
-        {/* Flagship Highlight Project Card (EdgeIQ) with Scroll Reveal */}
+        {/* Flagship Highlight Project Card */}
         {flagshipProject && activeCategory === "All" && !searchQuery && (
           <motion.div
-            initial={{ opacity: 0, y: 35, scale: 0.96 }}
+            initial={{ opacity: 0, y: 30, scale: 0.97 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: false, amount: 0.2 }}
+            viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
             className="glass-panel rounded-3xl p-6 sm:p-9 border border-border relative overflow-hidden mb-12 shadow-2xl gradient-border group"
           >
@@ -188,9 +209,6 @@ export default function Projects() {
                   <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1 font-medium">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
                     Live Application
-                  </span>
-                  <span className="text-[10px] font-mono text-cyan-400 ml-auto">
-                    PRJ/01
                   </span>
                 </div>
 
@@ -226,30 +244,30 @@ export default function Projects() {
                 </div>
 
                 <div className="flex flex-wrap items-center gap-3">
+                  <Link
+                    href="/projects/edge-iq"
+                    className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 text-white font-medium text-xs uppercase tracking-wider flex items-center gap-2 shadow-lg shadow-purple-500/25 hover:opacity-95 transition-all group/link"
+                  >
+                    <FileText size={14} />
+                    View Case Study
+                    <ArrowUpRight size={14} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                  </Link>
+
                   {flagshipProject.liveUrl && (
                     <a
                       href={flagshipProject.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 text-white font-medium text-xs uppercase tracking-wider flex items-center gap-2 shadow-lg shadow-purple-500/25 hover:opacity-95 transition-all group/link"
+                      className="px-5 py-3 rounded-xl glass-panel text-foreground hover:text-cyan-400 font-medium text-xs uppercase tracking-wider border border-border flex items-center gap-2 transition-all shadow-sm"
                     >
                       <Globe size={14} />
-                      Launch Live App
-                      <ArrowUpRight size={14} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                      Live Demo
                     </a>
                   )}
-
-                  <button
-                    onClick={() => setSelectedProject(flagshipProject)}
-                    className="px-5 py-3 rounded-xl glass-panel text-foreground hover:text-cyan-400 font-medium text-xs uppercase tracking-wider border border-border flex items-center gap-2 transition-all shadow-sm"
-                  >
-                    <span>System Architecture</span>
-                    <ArrowRight size={14} />
-                  </button>
                 </div>
               </div>
 
-              {/* Right Code Terminal */}
+              {/* Right Code Console */}
               <div className="lg:w-80 p-4.5 rounded-2xl bg-[#080a0f] border border-white/10 text-cyan-400 font-mono text-[10px] hidden lg:flex flex-col gap-2.5 shadow-2xl">
                 <div className="flex items-center justify-between pb-2 border-b border-white/10 text-gray-400 text-[9px]">
                   <span className="flex items-center gap-1">
@@ -306,31 +324,30 @@ export default function Projects() {
           })}
         </div>
 
-        {/* Staggered Scroll-Triggered Projects Grid */}
+        {/* Projects Grid */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeCategory + searchQuery}
             variants={containerVariants}
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: false, amount: 0.15 }}
+            animate="show"
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {filteredProjects.map((project, index) => {
-              const projectSerial = `PRJ/${String(index + 1).padStart(2, "0")}`;
+              const csSlug = getCaseStudySlug(project.id);
               return (
-                <TiltCard key={project.id} tiltAmount={12}>
+                <TiltCard key={project.id} tiltAmount={8}>
                   <motion.div
                     variants={cardVariants}
                     className="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between border border-border relative overflow-hidden group shadow-xl hover:border-cyan-500/50 hover:shadow-cyan-500/10 transition-all duration-300 h-full"
                   >
                   {/* Top Section */}
                   <div>
-                    {/* Header Badge & Serial */}
+                    {/* Header Badge */}
                     <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-border">
                       {getTypeBadge(project.type)}
                       <span className="text-[10px] font-mono text-gray-400 dark:text-gray-500 group-hover:text-cyan-400 transition-colors">
-                        {projectSerial}
+                        PRJ/0{index + 1}
                       </span>
                     </div>
 
@@ -379,36 +396,46 @@ export default function Projects() {
 
                     {/* Action Bar */}
                     <div className="grid grid-cols-2 gap-2 pt-1">
+                      {csSlug ? (
+                        <Link
+                          href={`/projects/${csSlug}`}
+                          className="py-2 px-3 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 hover:opacity-95 text-white font-medium text-[11px] border border-cyan-400/30 transition-all flex items-center justify-center gap-1.5 group/link shadow-md"
+                        >
+                          <FileText size={13} />
+                          <span>Case Study</span>
+                          <ArrowUpRight size={12} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                        </Link>
+                      ) : (
+                        <button
+                          onClick={() => setSelectedProject(project)}
+                          className="py-2 px-3 rounded-xl glass-panel text-foreground font-medium text-[11px] border border-border transition-all flex items-center justify-center gap-1.5"
+                        >
+                          <FileText size={13} />
+                          <span>Details</span>
+                        </button>
+                      )}
+
                       {project.liveUrl ? (
                         <a
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="py-2 px-3 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 hover:opacity-95 text-white font-medium text-[11px] border border-cyan-400/30 transition-all flex items-center justify-center gap-1.5 group/link shadow-md"
+                          className="py-2 px-3 rounded-xl glass-panel text-gray-700 dark:text-gray-300 hover:text-cyan-400 font-medium text-[11px] border border-border hover:border-cyan-500/40 transition-all flex items-center justify-center gap-1.5"
                         >
                           <Globe size={13} />
-                          <span>Visit App</span>
-                          <ArrowUpRight size={12} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                          <span>Live App</span>
                         </a>
                       ) : (
                         <a
                           href={project.githubUrl || "https://github.com/rajm1711"}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="py-2 px-3 rounded-xl glass-panel text-foreground font-medium text-[11px] border border-border transition-all flex items-center justify-center gap-1.5"
+                          className="py-2 px-3 rounded-xl glass-panel text-gray-700 dark:text-gray-300 hover:text-cyan-400 font-medium text-[11px] border border-border hover:border-cyan-500/40 transition-all flex items-center justify-center gap-1.5"
                         >
                           <Github size={13} />
-                          <span>Source</span>
+                          <span>GitHub</span>
                         </a>
                       )}
-
-                      <button
-                        onClick={() => setSelectedProject(project)}
-                        className="py-2 px-3 rounded-xl glass-panel text-gray-700 dark:text-gray-300 hover:text-cyan-400 font-medium text-[11px] border border-border hover:border-cyan-500/40 transition-all flex items-center justify-center gap-1.5 group/btn"
-                      >
-                        <span>Details</span>
-                        <ArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
-                      </button>
                     </div>
                   </div>
                 </motion.div>
@@ -421,7 +448,7 @@ export default function Projects() {
         {filteredProjects.length === 0 && (
           <div className="text-center py-14 glass-panel rounded-2xl border border-border my-6">
             <p className="text-gray-500 dark:text-gray-400 text-xs font-mono font-normal">
-              No projects found matching &quot;{searchQuery}&quot; in this category.
+              No projects found matching &quot;{searchQuery}&quot;.
             </p>
             <button
               onClick={() => {
@@ -436,7 +463,6 @@ export default function Projects() {
         )}
       </div>
 
-      {/* Sheet Modal */}
       <ProjectModal
         project={selectedProject}
         onClose={() => setSelectedProject(null)}

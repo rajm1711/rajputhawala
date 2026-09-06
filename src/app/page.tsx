@@ -2,10 +2,12 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Philosophy from "@/components/Philosophy";
 import ServicesOfferings from "@/components/ServicesOfferings";
+import InternationalClientSection from "@/components/InternationalClientSection";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
 import EducationCertifications from "@/components/EducationCertifications";
+import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import SpotlightBackground from "@/components/SpotlightBackground";
@@ -28,6 +30,9 @@ export default function Home() {
       
       <div className="cinematic-divider my-4" />
       <ServicesOfferings />
+
+      <div className="cinematic-divider my-4" />
+      <InternationalClientSection />
       
       <div className="cinematic-divider my-4" />
       <Projects />
@@ -41,6 +46,9 @@ export default function Home() {
       <div className="cinematic-divider my-4" />
       <EducationCertifications />
       
+      <div className="cinematic-divider my-4" />
+      <FAQ />
+
       <div className="cinematic-divider my-4" />
       <Contact />
       

@@ -3,23 +3,24 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 import { personalDetails } from "@/data/resumeData";
-import { Menu, X, ArrowUpRight, Code2, Sun, Moon, Sparkles, Clock, MapPin } from "lucide-react";
+import { Menu, X, ArrowUpRight, Code2, Sun, Moon, Sparkles } from "lucide-react";
 
 const navItems = [
-  { name: "About", href: "#about" },
-  { name: "Philosophy", href: "#philosophy" },
-  { name: "Offerings", href: "#services" },
-  { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Projects", href: "/projects" },
+  { name: "Services", href: "/services" },
+  { name: "Case Studies", href: "/case-studies" },
+  { name: "Articles", href: "/articles" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [istTime, setIstTime] = useState("");
   const { theme, setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => {
@@ -29,24 +30,8 @@ export default function Navbar() {
     };
     window.addEventListener("scroll", handleScroll);
 
-    // Live IST Clock Timer
-    const updateClock = () => {
-      const options: Intl.DateTimeFormatOptions = {
-        timeZone: "Asia/Kolkata",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: true,
-      };
-      setIstTime(new Date().toLocaleTimeString("en-US", options));
-    };
-
-    updateClock();
-    const interval = setInterval(updateClock, 1000);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      clearInterval(interval);
     };
   }, []);
 
@@ -54,11 +39,25 @@ export default function Navbar() {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.includes("#")) {
+      const targetId = href.split("#")[1];
+      const element = document.getElementById(targetId);
+      if (element && (window.location.pathname === "/" || window.location.pathname === "")) {
+        e.preventDefault();
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+    }
+  };
+
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "glass-panel py-2.5 shadow-xl border-b border-border"
@@ -66,10 +65,10 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo & Live Location Pill */}
+        {/* Brand Logo */}
         <div className="flex items-center gap-4">
-          <a
-            href="#about"
+          <Link
+            href="/"
             className="group flex items-center gap-2.5 text-base font-semibold font-heading tracking-tight"
           >
             <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500 via-purple-500 to-pink-500 flex items-center justify-center text-white shadow-md shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300 p-0.5">
@@ -83,39 +82,28 @@ export default function Navbar() {
               </span>
               <span className="text-[9px] uppercase font-mono tracking-wider text-cyan-600 dark:text-cyan-400 font-medium flex items-center gap-1">
                 <Sparkles size={9} />
-                Systems Architect
+                Full-Stack MERN + Next.js
               </span>
             </div>
-          </a>
-
-          {/* Live Surat IST Clock Widget */}
-          {mounted && (
-            <div className="hidden lg:flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 dark:bg-cyan-500/15 border border-cyan-500/25 text-[10px] font-mono text-cyan-600 dark:text-cyan-400">
-              <MapPin size={10} className="text-cyan-500" />
-              <span>Surat, IN</span>
-              <span className="text-gray-400">•</span>
-              <Clock size={10} className="text-cyan-400 animate-spin" />
-              <span className="font-medium">{istTime || "IST"}</span>
-            </div>
-          )}
+          </Link>
         </div>
 
         {/* Desktop Nav Items */}
         <nav className="hidden md:flex items-center gap-0.5 glass-panel px-3.5 py-1.5 rounded-full shadow-md border border-border">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.name}
               href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
               className="px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-gray-600 dark:text-gray-300 hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition-all duration-150"
             >
               {item.name}
-            </a>
+            </Link>
           ))}
         </nav>
 
-        {/* Desktop Action & Theme Toggle */}
+        {/* Action Controls */}
         <div className="hidden md:flex items-center gap-2.5">
-          {/* Theme Toggle Button */}
           {mounted && (
             <button
               onClick={toggleTheme}
@@ -144,7 +132,7 @@ export default function Navbar() {
           </a>
         </div>
 
-        {/* Mobile Buttons */}
+        {/* Mobile Toggle Buttons */}
         <div className="md:hidden flex items-center gap-2">
           {mounted && (
             <button
@@ -176,21 +164,16 @@ export default function Navbar() {
         >
           <div className="flex flex-col gap-2.5">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className="text-xs font-medium text-gray-700 dark:text-gray-300 hover:text-cyan-500 py-1"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
             <div className="pt-3 border-t border-border flex flex-col gap-2">
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-cyan-500/10 text-[10px] font-mono text-cyan-500 justify-center">
-                <MapPin size={10} />
-                <span>Surat, IN • IST</span>
-                <span>{istTime}</span>
-              </div>
               <a
                 href={personalDetails.github}
                 target="_blank"
@@ -207,7 +190,3 @@ export default function Navbar() {
     </motion.header>
   );
 }
-
-
-
-
