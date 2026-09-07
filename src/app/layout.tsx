@@ -24,16 +24,17 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Raj Puthawala | Full-Stack MERN + Next.js Developer",
   description:
-    "Raj Puthawala is a Full-Stack MERN + Next.js Developer specializing in React, Next.js, Node.js and production-ready web applications for startups and businesses.",
+    "Raj Puthawala is a Full-Stack MERN + Next.js Developer specializing in React, Next.js, Node.js, Express and production-ready web applications for startups and businesses.",
   keywords: [
     "Raj Puthawala",
-    "Full-Stack MERN + Next.js Developer",
-    "Frontend Specialist",
-    "React Developer",
+    "Full-Stack MERN Developer",
     "Next.js Developer",
+    "React Developer",
+    "Frontend Specialist",
     "Node.js Developer",
     "TypeScript Developer",
-    "Full-Stack Web Applications",
+    "MERN Stack Developer",
+    "Full-Stack Web Developer",
     "SaaS Developer",
     "E-Commerce Developer",
   ],
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Raj Puthawala | Full-Stack MERN + Next.js Developer",
     description:
-      "Full-Stack MERN + Next.js Developer building production-ready web applications for modern startups, businesses, and international clients.",
+      "Full-Stack MERN + Next.js Developer specializing in React, Next.js, Node.js and production-ready web applications.",
     url: "https://rajputhawala.vercel.app",
     siteName: "Raj Puthawala Portfolio",
     locale: "en_US",
@@ -59,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Raj Puthawala | Full-Stack MERN + Next.js Developer",
     description:
-      "Full-Stack MERN + Next.js Developer specializing in React, Next.js, Node.js, and modern full-stack web applications.",
+      "Full-Stack MERN + Next.js Developer specializing in React, Next.js, Node.js and production-ready web applications.",
   },
 };
 
@@ -73,13 +74,14 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Raj Puthawala",
-    jobTitle: "Full-Stack MERN + Next.js Developer | Frontend Specialist",
+    jobTitle:
+      "Full-Stack MERN + Next.js Developer | Frontend Specialist",
     description:
-      "Raj Puthawala is a Full-Stack MERN + Next.js Developer specializing in React, Next.js, Node.js, Express, and production-ready web applications for startups and businesses.",
+      "Raj Puthawala is a Full-Stack MERN + Next.js Developer specializing in React, Next.js, Node.js, Express and production-ready web applications.",
     url: "https://rajputhawala.vercel.app",
     sameAs: [
       "https://github.com/rajm1711",
-      "https://github.com/rajm1711", // LinkedIn profile link when available
+      "https://www.linkedin.com/in/raj-puthawala-6b4620147/",
     ],
     knowsAbout: [
       "React",
@@ -94,17 +96,14 @@ export default function RootLayout({
       "REST APIs",
       "Redux Toolkit",
       "Zustand",
-      "React Hook Form",
       "Tailwind CSS",
-      "Ant Design",
-      "Radix UI",
       "JWT Authentication",
-      "Vercel",
+      "Frontend Development",
+      "Full-Stack Development",
+      "E-Commerce Development",
+      "SaaS Development",
+      "Web Application Development",
     ],
-    worksFor: {
-      "@type": "Organization",
-      name: "Codelamda Technology",
-    },
   };
 
   const websiteJsonLd = {

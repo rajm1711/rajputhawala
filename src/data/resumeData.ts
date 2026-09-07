@@ -37,13 +37,13 @@ export interface SkillCategory {
 export const personalDetails = {
   name: "RAJ PUTHAWALA",
   shortName: "Raj Puthawala",
-  title: "Full Stack Developer",
-  subtitle: "MERN Stack & Next.js Specialist",
+  title: "Full-Stack MERN + Next.js Developer",
+  subtitle: "Frontend Specialist",
   email: "rmputhawala@gmail.com",
   phone: "+91 9376110969",
   location: "Surat, Gujarat, India",
   github: "https://github.com/rajm1711",
-  linkedin: "https://github.com/rajm1711",
+  linkedin: "https://www.linkedin.com/in/raj-puthawala-6b4620147/",
   summary:
     "Full Stack Developer specializing in the MERN stack with hands-on experience building scalable, production-level web applications. Proficient in Next.js, TypeScript, and modern frontend architectures, with strong backend expertise in API development, authentication systems, Docker containerization, and real-time communication. Deployed multiple full-stack applications across Vercel and Render.",
   highlights: [

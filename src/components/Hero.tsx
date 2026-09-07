@@ -72,7 +72,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 font-normal leading-relaxed max-w-2xl mb-7"
             >
-              I build modern, production-ready web applications using React, Next.js, Node.js, Express and modern database technologies, with a strong focus on frontend quality, performance, responsive UX and scalable backend architecture.
+              Frontend Specialist building production-ready web applications with React, Next.js, Node.js and modern backend technologies. Strong focus on frontend architecture, performance, scalable APIs and production-ready systems.
             </motion.p>
 
             {/* Action Buttons Bar */}
