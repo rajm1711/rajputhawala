@@ -39,6 +39,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Raj Puthawala" }],
   creator: "Raj Puthawala",
+  verification: {
+    google: "I18Hmg_JsrJ-t_CLfzJBUNblYwSNCs6y8F19Kt-ekJ4",
+  },
   metadataBase: new URL("https://rajputhawala.vercel.app"),
   alternates: {
     canonical: "https://rajputhawala.vercel.app",
